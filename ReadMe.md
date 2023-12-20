@@ -13,7 +13,7 @@ The code of mcloss is integrated into a class.
 
 #### Results:
 
-- The experiment is conducted with 2 RTX 2080Ti GPUs, and the batchsize is set to 32.
+- The experiment is conducted with 1 Nvidia P100 GPU of kaggle, and the batchsize is set to 32.
 - Trained from scratch:
   - Init_lr: 0.1 for all
   - lr_scheduler: MultiStepLR (total-300, milestones-[150, 225], lr_gamma-0.1)
