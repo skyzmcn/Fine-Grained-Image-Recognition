@@ -48,7 +48,7 @@ The code of mcloss is integrated into a class.
 |   VGG11    |       Flip        | 224  |     ——     |    55.52     |
 |   VGG11    |       Crop        | 224  |     ——     |    53.47     |
 |   VGG11    |     Flip+Crop     | 224  |     ——     |    63.10     |
-|   VGG11    |  Flip+Crop+Bbox   | 224  |     ——     |    72.17     |
+|   VGG11    |  Flip+Crop+Bbox   | 224  |     ——     |    74.87     |
 |   VGG13    |        ——         | 224  |     ——     |    66.13     |
 |   VGG16    |        ——         | 224  |     ——     |    64.13     |
 |   VGG19    |        ——         | 224  |     ——     |    57.42     |
