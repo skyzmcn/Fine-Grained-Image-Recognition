@@ -71,15 +71,15 @@ args.savepath = './Test/'
 args.eps = 3
 args.alpha = 1.5
 args.lambda_ = 10
-args.p = 0.5
+args.p = 0.4
 args.num_class = 200
-args.lr = 0.1
+args.lr = 0.005
 args.weight_decay = 5e-4
 args.momentum = 0.9
 args.scheduler = 'multi'
 args.loss = "mcloss"
-args.lr_step = 100
-args.lr_gamma = 0.1
+args.lr_step = 30
+args.lr_gamma = 0.8
 args.total_epoch = 300
 args.batch_size = 32
 args.num_workers = cpu_count()
@@ -87,8 +87,8 @@ args.img_size = 224
 args.seed = None
 args.gpu_id = 0
 args.multi_gpus = False
-args.pretrained = False
-args.bbox = False
+args.pretrained = True
+args.bbox = True
 args.gray = False
 args.init_weight = False
 args.train_method = "all"
@@ -227,12 +227,16 @@ if __name__ == '__main__':
         pass
 
     # dataloader
-    pin_memory = True if args.num_workers != 0 else False
-    trainset = DataSet(mode='train', size=args.img_size)
-    testset = DataSet(mode='test', size=args.img_size)
-    trainloader = DataLoader(dataset=trainset, batch_size=args.batch_size, shuffle=True, num_workers=args.num_workers, pin_memory=pin_memory, drop_last=True)
-    testloader = DataLoader(dataset=testset, batch_size=args.batch_size, shuffle=False, num_workers=args.num_workers, pin_memory=pin_memory)
-
+    if args.bbox:
+        train_set = DataSet("train_bbox", args.img_size, args.gray)
+        test_set = DataSet("test_bbox", args.img_size, args.gray)
+    else:
+        train_set = DataSet("train", args.img_size, args.gray)
+        test_set = DataSet("test", args.img_size, args.gray)
+    train_loader = DataLoader(dataset=train_set, batch_size=args.batch_size, shuffle=True,
+                              num_workers=args.num_workers, drop_last=True)
+    test_loader = DataLoader(dataset=test_set, batch_size=args.batch_size, shuffle=False,
+                             num_workers=args.num_workers)
     # model
     model = BaseModel(args.model_name, args.num_class, args.pretrained,
                       args.train_method, args.init_weight)
