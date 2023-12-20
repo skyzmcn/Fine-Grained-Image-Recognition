@@ -71,7 +71,7 @@ The code of mcloss is integrated into a class.
 |  RESNET50  |  Flip+Crop+Bbox   | 224  | Pretrained |   Running    |
 
 
-***PS: the first feat dimension should equal to np.dot(cnums, cgroups) and sum(cgroups) should equal to num_class. ***
+PS: the first feat dimension should equal to np.dot(cnums, cgroups) and sum(cgroups) should equal to num_class.
 
 
 #### Reference:
